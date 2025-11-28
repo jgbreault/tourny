@@ -2,21 +2,17 @@ from ..structure.foundation import Tournament
 
 def getRoundProbablities(tournament, teamName, numSimulations=100000):
 
-    tournament.runTournament()
-    
-    numRounds = len(tournament.rounds)
-    roundKeys = ['No Wins'] + [f'Round {i+1}' for i in range(numRounds-1)] + ['Undefeated']
-    roundCounts = dict.fromkeys(roundKeys, 0)
+    roundCounts = dict.fromkeys(getRoundKeys(tournament), 0)
 
     for i in range(numSimulations):
         
-        tourny = Tournament(tournament.teams, tournament.pairingType)
-        tourny.runTournament()
+        tournament.runTournament()
+        numRounds = len(tournament.rounds)
 
         for j in range(numRounds):
 
-            currentRound = tourny.rounds[j]
-            roundWinnerNames = [match.winner.name for match in currentRound.matches]
+            currentRound = tournament.rounds[j]
+            roundWinnerNames = getRoundWinnerNames(currentRound)
 
             if not teamName in roundWinnerNames:
 
@@ -31,3 +27,17 @@ def getRoundProbablities(tournament, teamName, numSimulations=100000):
                  roundCounts['Undefeated'] += 1
                         
     return {team: count/numSimulations for team, count in roundCounts.items()}
+
+def getRoundKeys(tournament):
+    
+    tournament.runTournament()
+    
+    numRounds = len(tournament.rounds)
+    roundKeys = ['No Wins'] + [f'Round {i+1}' for i in range(numRounds-1)] + ['Undefeated']
+
+    return ['No Wins'] + [f'Round {i+1}' for i in range(numRounds-1)] + ['Undefeated']
+
+def getRoundWinnerNames(currentRound):
+    return [match.winner.name for match in currentRound.matches]
+
+    

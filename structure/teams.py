@@ -1,11 +1,30 @@
-from .foundation import Team
+from .foundation import *
+
+def countTeams(teams):
+    return len(teams)
+
+def sortTeamsByQuality(teams):
+    teams.sort(key=lambda t: t.quality, reverse=True)
+
+def getBestTeams(teams):
+
+    bestTeams = []
+    bestQuality = max([team.quality for team in teams])
+    
+    for team in teams:
+        if team.quality == bestQuality:
+            bestTeams.append(team)
+
+    return bestTeams
+
+    
 
 ########## Quidditch Teams (Size: 4) ##########
 
-gryffindor = Team('Gryffindor', 100)
-slytherin = Team('Slytherin', 90)
-ravenclaw = Team('Ravenclaw', 20)
-hufflepuff = Team('Hufflepuff', 10)
+gryffindor = HogwartsHouse('Gryffindor', 100, 'red')
+slytherin = HogwartsHouse('Slytherin', 90, 'green')
+ravenclaw = HogwartsHouse('Ravenclaw', 20, 'blue')
+hufflepuff = HogwartsHouse('Hufflepuff', 10, 'yellow')
 
 quidditch = [
     gryffindor,
@@ -17,14 +36,14 @@ quidditch = [
 
 ########## Top Chess Players (Size: 8) ##########
 
-magnusCarlsen = Team('Magnus Carlsen', 100)
-hikaruNakamura = Team('Hikaru Nakamura', 92)
-dingLiren = Team('Ding Liren', 87)
-alirezaFirouzja = Team('Alireza Firouzja', 85)
-ianNepomniachtchi = Team('Ian Nepomniachtchi', 80)
-fabianoCaruana = Team('Fabiano Caruana', 72)
-anishGiri = Team('Anish Giri', 60)
-levonAronian = Team('Levon Aronian', 44)
+magnusCarlsen = ChessPlayer('Magnus Carlsen', 100, 'Norway')
+hikaruNakamura = ChessPlayer('Hikaru Nakamura', 92, 'USA')
+dingLiren = ChessPlayer('Ding Liren', 87, 'China')
+alirezaFirouzja = ChessPlayer('Alireza Firouzja', 85, 'Iran')
+ianNepomniachtchi = ChessPlayer('Ian Nepomniachtchi', 80, 'Russia')
+fabianoCaruana = ChessPlayer('Fabiano Caruana', 72, 'USA')
+anishGiri = ChessPlayer('Anish Giri', 60, 'Netherlands')
+levonAronian = ChessPlayer('Levon Aronian', 44, 'Armenia')
 
 chess = [
     magnusCarlsen,
@@ -40,22 +59,22 @@ chess = [
 
 ########## Avengers (Size: 16) ##########
 
-scarletWitch = Team('Scarlet Witch', 100)
-thor = Team('Thor', 98)
-hulk = Team('Hulk', 95)
-captainMarvel = Team('Captain Marvel', 94)
-doctorStrange = Team('Doctor Strange', 92)
-vision = Team('Vision', 90)
-ironMan = Team('Iron Man', 40)
-spiderMan = Team('Spider-Man', 30)
-blackPanther = Team('Black Panther', 25)
-captainAmerica = Team('Captain America', 20)
-blackWidow = Team('Black Widow', 15)
-hawkeye = Team('Hawkeye', 12)
-falcon = Team('Falcon', 10)
-warMachine = Team('War Machine', 8)
-antMan = Team('Ant-Man', 5)
-starlord = Team('Star-Lord', 4)
+scarletWitch = Superhero('Scarlet Witch', 100, 'Magic')
+thor = Superhero('Thor', 98, 'Magic')
+hulk = Superhero('Hulk', 95, 'Strength')
+captainMarvel = Superhero('Captain Marvel', 94, 'Energy')
+doctorStrange = Superhero('Doctor Strange', 92, 'Magic')
+vision = Superhero('Vision', 90, 'Tech')
+ironMan = Superhero('Iron Man', 40, 'Tech')
+spiderMan = Superhero('Spider-Man', 30, 'Agility')
+blackPanther = Superhero('Black Panther', 25, 'Agility')
+captainAmerica = Superhero('Captain America', 20, 'Agility')
+blackWidow = Superhero('Black Widow', 15, 'Agility')
+hawkeye = Superhero('Hawkeye', 12, 'Agility')
+falcon = Superhero('Falcon', 10, 'Flight')
+warMachine = Superhero('War Machine', 8, 'Tech')
+antMan = Superhero('Ant-Man', 5, 'Size Manipulation')
+starlord = Superhero('Star-Lord', 4, 'Tech')
 
 avengers = [
     scarletWitch,
@@ -79,45 +98,50 @@ avengers = [
 
 ########## NHL Teams (Size: 32) ##########
 
-torontoMapleLeafs = Team('Toronto Maple Leafs', 100)
-edmontonOilers = Team('Edmonton Oilers', 99)
-vancouverCanucks = Team('Vancouver Canucks', 98)
-montrealCanadiens = Team('Montreal Canadiens', 97)
-calgaryFlames = Team('Calgary Flames', 96)
-winnipegJets = Team('Winnipeg Jets', 95)
-ottawaSenators = Team('Ottawa Senators', 94)
-coloradoAvalanche = Team('Colorado Avalanche', 60)
-bostonBruins = Team('Boston Bruins', 57)
-pittsburghPenguins = Team('Pittsburgh Penguins', 56)
-vegasGoldenKnights = Team('Vegas Golden Knights', 55)
-tampaBayLightning = Team('Tampa Bay Lightning', 54)
-newYorkRangers = Team('New York Rangers', 53)
-carolinaHurricanes = Team('Carolina Hurricanes', 52)
-floridaPanthers = Team('Florida Panthers', 51)
-newJerseyDevils = Team('New Jersey Devils', 50)
-minnesotaWild = Team('Minnesota Wild', 49)
-newYorkIslanders = Team('New York Islanders', 48)
-dallasStars = Team('Dallas Stars', 47)
-seattleKraken = Team('Seattle Kraken', 46)
-losAngelesKings = Team('Los Angeles Kings', 45)
-stLouisBlues = Team('St. Louis Blues', 44)
-anaheimDucks = Team('Anaheim Ducks', 43)
-nashvillePredators = Team('Nashville Predators', 42)
-utahMammoth = Team('Utah Mammoth', 41)
-detroitRedWings = Team('Detroit Red Wings', 40)
-sanJoseSharks = Team('San Jose Sharks', 39)
-buffaloSabres = Team('Buffalo Sabres', 38)
-philadelphiaFlyers = Team('Philadelphia Flyers', 37)
-columbusBlueJackets = Team('Columbus Blue Jackets', 36)
-chicagoBlackhawks = Team('Chicago Blackhawks', 35)
-arizonaCoyotes = Team('Arizona Coyotes', 34)
+torontoMapleLeafs = HockeyTeam('Toronto Maple Leafs', 100, 'Leaf')
+edmontonOilers = HockeyTeam('Edmonton Oilers', 99, 'Human')
+vancouverCanucks = HockeyTeam('Vancouver Canucks', 98, 'Orca')
+montrealCanadiens = HockeyTeam('Montreal Canadiens', 97, 'Human')
+calgaryFlames = HockeyTeam('Calgary Flames', 96, 'Dog')
+winnipegJets = HockeyTeam('Winnipeg Jets', 95, 'Moose')
+ottawaSenators = HockeyTeam('Ottawa Senators', 94, 'Human')
+coloradoAvalanche = HockeyTeam('Colorado Avalanche', 60, 'Human')
+bostonBruins = HockeyTeam('Boston Bruins', 57, 'Bear')
+pittsburghPenguins = HockeyTeam('Pittsburgh Penguins', 56, 'Penguin')
+vegasGoldenKnights = HockeyTeam('Vegas Golden Knights', 55, 'Human')
+tampaBayLightning = HockeyTeam('Tampa Bay Lightning', 54, 'Bug')
+newYorkRangers = HockeyTeam('New York Rangers', 53, 'Human')
+carolinaHurricanes = HockeyTeam('Carolina Hurricanes', 52, 'Human')
+floridaPanthers = HockeyTeam('Florida Panthers', 51, 'Cat')
+newJerseyDevils = HockeyTeam('New Jersey Devils', 50, 'Mythical')
+minnesotaWild = HockeyTeam('Minnesota Wild', 49, 'Bear')
+newYorkIslanders = HockeyTeam('New York Islanders', 48, 'Dog')
+dallasStars = HockeyTeam('Dallas Stars', 47, 'Human')
+seattleKraken = HockeyTeam('Seattle Kraken', 46, 'Mythical')
+losAngelesKings = HockeyTeam('Los Angeles Kings', 45, 'Lion')
+stLouisBlues = HockeyTeam('St. Louis Blues', 44, 'Human')
+anaheimDucks = HockeyTeam('Anaheim Ducks', 43, 'Duck')
+nashvillePredators = HockeyTeam('Nashville Predators', 42, 'Cat')
+utahMammoth = HockeyTeam('Utah Mammoth', 41, 'Mammoth')
+detroitRedWings = HockeyTeam('Detroit Red Wings', 40, 'Octopus')
+sanJoseSharks = HockeyTeam('San Jose Sharks', 39, 'Shark')
+buffaloSabres = HockeyTeam('Buffalo Sabres', 38, 'Sabre-tooth')
+philadelphiaFlyers = HockeyTeam('Philadelphia Flyers', 37, 'Human')
+columbusBlueJackets = HockeyTeam('Columbus Blue Jackets', 36, 'Insect')
+chicagoBlackhawks = HockeyTeam('Chicago Blackhawks', 35, 'Human')
+arizonaCoyotes = HockeyTeam('Arizona Coyotes', 34, 'Coyote')
 
 hockey = [
+    torontoMapleLeafs,
+    edmontonOilers,
+    vancouverCanucks,
+    montrealCanadiens,
+    calgaryFlames,
+    winnipegJets,
+    ottawaSenators,
     coloradoAvalanche,
     bostonBruins,
     pittsburghPenguins,
-    torontoMapleLeafs,
-    edmontonOilers,
     vegasGoldenKnights,
     tampaBayLightning,
     newYorkRangers,
@@ -125,24 +149,19 @@ hockey = [
     floridaPanthers,
     newJerseyDevils,
     minnesotaWild,
-    vancouverCanucks,
     newYorkIslanders,
-    montrealCanadiens,
     dallasStars,
     seattleKraken,
     losAngelesKings,
-    calgaryFlames,
     stLouisBlues,
     anaheimDucks,
-    winnipegJets,
     nashvillePredators,
-    ottawaSenators,
     utahMammoth,
     detroitRedWings,
     sanJoseSharks,
     buffaloSabres,
     philadelphiaFlyers,
-    chicagoBlackhawks,
     columbusBlueJackets,
+    chicagoBlackhawks,
     arizonaCoyotes
 ]

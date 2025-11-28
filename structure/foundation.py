@@ -12,6 +12,46 @@ class Team():
     def probabilityOfWinning(self, opponent):
         return self.quality / (self.quality + opponent.quality)
 
+class HogwartsHouse(Team):
+
+    def __init__(self,
+                 name,
+                 quality,
+                 houseColour):
+
+        super().__init__(name, quality)
+        self.houseColour = houseColour
+
+class Superhero(Team):
+
+    def __init__(self,
+                 name,
+                 quality,
+                 power):
+
+        super().__init__(name, quality)
+        self.power = power
+
+class ChessPlayer(Team):
+
+    def __init__(self,
+                 name,
+                 quality,
+                 homeCountry):
+
+        super().__init__(name, quality)
+        self.homeCountry = homeCountry
+
+class HockeyTeam(Team):
+
+    def __init__(self,
+                 name,
+                 quality,
+                 mascot):
+
+        super().__init__(name, quality)
+        self.mascot = mascot
+
 class Match():
 
     def __init__(self,
@@ -30,11 +70,7 @@ class Match():
             self.winner = team1
         else:
             self.winner = team2
-
-    def hasWinner(self):
-        return self.winner != None
     
-
 class Round():
 
     def __init__(self,
@@ -42,14 +78,10 @@ class Round():
 
         self.matches = matches
 
-    @property
-    def numMatches(self):
-        return len(self.matches)
-
     def runRound(self):
         for match in self.matches:
             match.runMatch()
-
+            
 class Tournament():
 
     def __init__(self,
@@ -60,50 +92,36 @@ class Tournament():
         self.pairingType = pairingType
         self.rounds = []
 
-    @property
-    def numRounds(self):
-        return len(self.rounds)
-
     def addRound(self, teams):
         
         if self.pairingType == 'random':
-            teamPairs = self.randomPairing(teams)
+            shuffledTeams = random.sample(teams, len(teams))
+            teamPairs = [shuffledTeams[i:i+2] for i in range(0, len(shuffledTeams), 2)]
         elif self.pairingType == 'similar':
-            teamPairs = self.similarPairing(teams)
+            teamsSorted = sorted(teams, key=lambda team: team.quality)
+            teamPairs = [teamsSorted[i:i+2] for i in range(0, len(teamsSorted), 2)]
         elif self.pairingType == 'opposite':
-            teamPairs = self.oppositePairing(teams)
+            teamsSorted = sorted(teams, key=lambda team: team.quality, reverse=True)
+            teamPairs = [[teamsSorted[i], teamsSorted[len(teamsSorted)-i-1]] for i in range(len(teamsSorted)//2)]
 
         matches = []
         for teamPair in teamPairs:
             matches.append(Match(teamPair))
         
         self.rounds.append(Round(matches))
-        
-    def randomPairing(self, teams):
-        shuffledTeams = random.sample(teams, len(teams))
-        return [shuffledTeams[i:i+2] for i in range(0, len(shuffledTeams), 2)]
-
-    def similarPairing(self, teams):
-        teamsSorted = sorted(teams, key=lambda team: team.quality)
-        return [teamsSorted[i:i+2] for i in range(0, len(teamsSorted), 2)]
-
-    def oppositePairing(self, teams):
-        teamsSorted = sorted(teams, key=lambda team: team.quality, reverse=True)
-        return [[teamsSorted[i], teamsSorted[len(teamsSorted)-i-1]] for i in range(len(teamsSorted)//2)]
-    
-    def getWinningTeamName(self):
-        return self.rounds[-1].matches[0].winner.name
-
+            
     def runTournament(self):
+
+        self.rounds = []
 
         self.addRound(self.teams)
         currentRound = self.rounds[-1]
 
-        while not currentRound.matches[0].hasWinner():
+        while currentRound.matches[0].winner == None:
 
             currentRound.runRound()
             
-            isFinals = currentRound.numMatches == 1
+            isFinals = len(currentRound.matches) == 1
         
             if not isFinals:
                 
