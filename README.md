@@ -1,6 +1,6 @@
 # tourny - Tournament Simulator
 
-A Python package to simulate single-elimination tournaments
+A Python package to simulate single-elimination tournaments.
 
 ## Sub-Package 1 (structure) Module 1 (foundation)
 
@@ -32,6 +32,8 @@ Functions:
 
 Holds predefined lists of Teams to be used in simulations, and functions related to lists of Teams.
 
+Functions:
+
 1. countTeams
 
     Description
@@ -47,6 +49,8 @@ Holds predefined lists of Teams to be used in simulations, and functions related
 ## Sub-Package 2 (analysis) Module 1 (tournament)
 
 Holds functions related to anaylsing Tournaments as a whole. Also contains helper functions for setting up analysis.
+
+Functions:
 
 1. getWinnerProbabilities
 
@@ -64,6 +68,8 @@ Holds functions related to anaylsing Tournaments as a whole. Also contains helpe
 
 Holds functions related to anaylsing a specific Team in a Tournament. Also contains helper functions for setting up analysis.
 
+Functions:
+
 1. getRoundProbablities
 
     Description
@@ -80,6 +86,8 @@ Holds functions related to anaylsing a specific Team in a Tournament. Also conta
 
 Holds functions related to visualizing a single Tournament outcome. Also contains helper functions for setting up visualizations.
 
+Functions:
+
 1. treeTournament
 
     Plots a completed tournament in the form of a tree. It shows the pairing for all rounds and the results for all matches.
@@ -95,6 +103,8 @@ Holds functions related to visualizing a single Tournament outcome. Also contain
 ## Sub-Package 3 (visualization) Module 2 (analysis)
 
 Holds functions related to visualizing results from the analysis sub-package. Also contains helper functions for setting up visualizations.
+
+Functions:
 
 1. pieWinnerProbabilities
 
