@@ -1,2 +1,2 @@
 # tourny
-A Python package to simulation single-elimination tournaments
+A Python package to simulate single-elimination tournaments
