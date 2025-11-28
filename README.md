@@ -4,6 +4,10 @@ A Python package to simulate single-elimination tournaments
 
 ## Sub-Package 1 (structure) Module 1 (foundation)
 
+Holds classes for Teams, Matches, Rounds, and Tournaments. Together they can be used to simulate single-elimination tournaments. Sub-classes have been defined for HogwartsHouse, Superhero, ChessPlayer, and HockeyTeam using inheritance to simulate tournaments between different types of teams.
+
+Functions:
+
 1. Team.probabilityOfWinning
 
     Description
@@ -26,6 +30,8 @@ A Python package to simulate single-elimination tournaments
 
 ## Sub-Package 1 (structure) Module 2 (teams)
 
+Holds predefined lists of Teams to be used in simulations, and functions related to lists of Teams.
+
 1. countTeams
 
     Description
@@ -39,6 +45,8 @@ A Python package to simulate single-elimination tournaments
     Description
 
 ## Sub-Package 2 (analysis) Module 1 (tournament)
+
+Holds functions related to anaylsing Tournaments as a whole. Also contains helper functions for setting up analysis.
 
 1. getWinnerProbabilities
 
@@ -54,6 +62,8 @@ A Python package to simulate single-elimination tournaments
 
 ## Sub-Package 2 (analysis) Module 2 (team)
 
+Holds functions related to anaylsing a specific Team in a Tournament. Also contains helper functions for setting up analysis.
+
 1. getRoundProbablities
 
     Description
@@ -68,6 +78,8 @@ A Python package to simulate single-elimination tournaments
 
 ## Sub-Package 3 (visualization) Module 1 (tournament)
 
+Holds functions related to visualizing a single Tournament outcome. Also contains helper functions for setting up visualizations.
+
 1. treeTournament
 
     Plots a completed tournament in the form of a tree. It shows the pairing for all rounds and the results for all matches.
@@ -81,6 +93,8 @@ A Python package to simulate single-elimination tournaments
     Description
 
 ## Sub-Package 3 (visualization) Module 2 (analysis)
+
+Holds functions related to visualizing results from the analysis sub-package. Also contains helper functions for setting up visualizations.
 
 1. pieWinnerProbabilities
 

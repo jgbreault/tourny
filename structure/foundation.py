@@ -9,6 +9,9 @@ class Team():
         self.name = name
         self.quality = quality
 
+    def __str__(self):
+        return f'name: {self.name}, quality: {self.quality}'
+
     def probabilityOfWinning(self, opponent):
         return self.quality / (self.quality + opponent.quality)
 
@@ -22,6 +25,9 @@ class HogwartsHouse(Team):
         super().__init__(name, quality)
         self.houseColour = houseColour
 
+    def __str__(self):
+        return super().__str__() + f', houseColour: {self.houseColour}'
+
 class Superhero(Team):
 
     def __init__(self,
@@ -31,6 +37,9 @@ class Superhero(Team):
 
         super().__init__(name, quality)
         self.power = power
+
+    def __str__(self):
+        return super().__str__() + f', power: {self.power}'
 
 class ChessPlayer(Team):
 
@@ -42,6 +51,9 @@ class ChessPlayer(Team):
         super().__init__(name, quality)
         self.homeCountry = homeCountry
 
+    def __str__(self):
+        return super().__str__() + f', homeCountry: {self.homeCountry}'
+
 class HockeyTeam(Team):
 
     def __init__(self,
@@ -51,6 +63,9 @@ class HockeyTeam(Team):
 
         super().__init__(name, quality)
         self.mascot = mascot
+
+    def __str__(self):
+        return super().__str__() + f', mascot: {self.mascot}'
 
 class Match():
 
