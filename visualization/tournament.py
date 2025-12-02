@@ -25,8 +25,14 @@ def getNewFileName(name):
     return prefixString+"-"+str(1+max(integerList))
 
 def appendEdge(edgeList, previousMatch, newMatch) :
+    team1 = newMatch.teams[0]
+    team2 = newMatch.teams[1]
 
-    pass
+    pTeam1 = previousMatch.teams[0]
+    pTeam2 = previousMatch.teams[1]
+
+    edgeList.append((pTeam1.name+" vs "+pTeam2.name, team1.name+" vs "+team2.name,
+                {'label': 'Winner: '+previousMatch.winner.name}))
 
 def addRoundEdges(edges, round_, previousRound) :
 
@@ -40,23 +46,19 @@ def addRoundEdges(edges, round_, previousRound) :
                 break
 
             if team1 is pMatch.teams[0] :
-                edges.append((team1.name+" vs "+team2.name, pMatch.teams[0].name+" vs "+pMatch.teams[1].name, 
-                {'label': 'Winner: '+pMatch.winner.name}))
+                appendEdge(edges, pMatch, match)
                 edgeCount = edgeCount+1
 
-            if edgeCount < 2 and team1 is pMatch.teams[1] :
-                edges.append((team1.name+" vs "+team2.name, pMatch.teams[0].name+" vs "+pMatch.teams[1].name, 
-                {'label': 'Winner: '+pMatch.winner.name}))
+            if edgeCount < 2 and team1 is pMatch.teams[1] :               
+                appendEdge(edges, pMatch, match)
                 edgeCount = edgeCount+1
 
-            if edgeCount < 2 and team2 is pMatch.teams[0] :
-                edges.append((team1.name+" vs "+team2.name, pMatch.teams[0].name+" vs "+pMatch.teams[1].name, 
-                {'label': 'Winner: '+pMatch.winner.name}))
+            if edgeCount < 2 and team2 is pMatch.teams[0] :               
+                appendEdge(edges, pMatch, match)
                 edgeCount = edgeCount+1
 
-            if edgeCount < 2 and team2 is pMatch.teams[1] :
-                edges.append((team1.name+" vs "+team2.name, pMatch.teams[0].name+" vs "+pMatch.teams[1].name, 
-                {'label': 'Winner: '+pMatch.winner.name}))
+            if edgeCount < 2 and team2 is pMatch.teams[1] :  
+                appendEdge(edges, pMatch, match)
                 edgeCount = edgeCount+1
 
 def treeTournament(tourn, fileName = None) :
@@ -72,11 +74,10 @@ def treeTournament(tourn, fileName = None) :
     G.add_edges_from(edges)
 
     #pos = nx.spring_layout(G)
-    #pos = graphviz_layout(G, prog="dot")
     pos = nx.nx_pydot.graphviz_layout(G, prog="dot")
-    nx.draw(G, pos, with_labels=True, node_color='skyblue', node_size=2000, edge_color='gray', arrows=True)
-    #nx.draw(G, pos, with_labels=True)
-    plt.title("Tree Diagram with NetworkX and Matplotlib")
+    nx.draw(G, pos, with_labels=True, node_color='skyblue',  font_size=10, node_size=2000, edge_color='gray', arrows=True)
+
+    plt.title("Tournament Outcome:")
     
     if not fileName :
         fileName = getNewFileName("TournamentTree")
