@@ -1,0 +1,4 @@
+Jamie Breault
+Andre Gnandt
+
+We plan to build a sports tournament simulation library. There will be a Team object, and each team name will have to be specified by the user, along with a ranking from 0-100 representing the team's quality. There will be a Match object with two Teams, and a method to determine the winner probabilistically based on the relative team rankings. There will be a Round object, representing a round in the tournament. Each Round has a list of Matches, and the length of the list depends on the number of Rounds remaining in the tournament. The number of remaining rounds can be determined from the number of teams. There will be a function that simulates each game in a Round. There will be Tournament object with a list of Teams as input. There will be a function to create the pairings based on team ranking. We will use inheritance with the Team class to define different types of sports teams with attributes specific to each sport.
