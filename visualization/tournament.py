@@ -82,7 +82,11 @@ def treeTournament(tourn, fileName = None) :
 
     #pos = nx.spring_layout(G)
     pos = nx.nx_pydot.graphviz_layout(G, prog="dot")
-    nx.draw(G, pos, with_labels=True, node_color='skyblue',  font_size=7.5, node_size=2000, edge_color='gray', arrows=True)
+    nx.draw(G, pos, node_color='skyblue', node_size=2000, edge_color='gray', arrows=True)
+    
+    label_objects = nx.draw_networkx_labels(G, pos, font_size= 9)
+    for node, text_obj in label_objects.items():
+        text_obj.set_rotation(35)
 
     plt.title("Tournament Outcome:")
     if not fileName :
