@@ -4,7 +4,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from networkx.drawing.nx_pydot import graphviz_layout
 from ..structure.foundation import Tournament
-from ..structure.foundation import Team
 
 def getNewFileName(name):
     dateString = datetime.now().strftime("%Y-%m-%d")
@@ -84,7 +83,7 @@ def treeTournament(tourn, fileName = None) :
     pos = nx.nx_pydot.graphviz_layout(G, prog="dot")
     nx.draw(G, pos, node_color='skyblue', node_size=2000, edge_color='gray', arrows=True)
     
-    label_objects = nx.draw_networkx_labels(G, pos, font_size= 9)
+    label_objects = nx.draw_networkx_labels(G, pos, font_size= 8)
     for node, text_obj in label_objects.items():
         text_obj.set_rotation(35)
 

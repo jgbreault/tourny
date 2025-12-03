@@ -1,13 +1,11 @@
-import pygal, glob, re
-from datetime import datetime
+import pygal 
 from ..analysis import tournament as tourny
 from ..analysis import team as tournyTeam
 from ..structure.foundation import Tournament
-from ..structure.foundation import Team
 from ..visualization.tournament import getNewFileName
 
 def plotPieTournament(winnerProbabilities, pairingType = None, fileName = None):
-    pieChart = pygal.Pie()
+    pieChart = pygal.Pie(width=1200, legend_at_bottom=True)
     pieChart.title = "Percent chance of each team winning the Tournament"
 
     if pairingType :
@@ -26,7 +24,7 @@ def pieTournament(tournament, fileName = None, numSimulations=100000):
     plotPieTournament(winnerProbabilities, tournament.pairingType, fileName)
 
 def plotPieTeam(roundProbabilities, teamName, pairingType = None, fileName = None):
-    pieChart = pygal.Pie()
+    pieChart = pygal.Pie(width=1200,legend_at_bottom=True)
     pieChart.title = "Percent chance of team '"+teamName+"' making it to each round of the Tournament"
 
     if pairingType :
