@@ -59,7 +59,7 @@ Functions:
 2. sortTeamsByQuality(teams)  
   
     Sorts the list of teams by their quality attribute, in descending order.   
-    **return value** - None
+    **return value** - None  
     **parameter - teams** - The list of team objects to sort.
 
 3. getBestTeams(teams)  
@@ -83,7 +83,7 @@ Functions:
    
 2. getTeamNames(tournament)  
   
-    Gets the names of all teams in a given tournament.
+    Gets the names of all teams in a given tournament.  
     **return value** - list of team names in the tournament  
     **parameter - tournament** - The tournament instance to get the team names from.
 
@@ -104,7 +104,7 @@ Functions:
     Determines the probability of a given team making it to each round in a given tournament.  
     **return value** - dictionary with round levels as keys and probabilities as values  
     **parameter - tournament** - The tournament instance to find these probabilities from.  
-    **parameter - teamName** - The string name of the team to get the round probabilities on.
+    **parameter - teamName** - The string name of the team to get the round probabilities on.  
     **parameter numSimulations** - THe number of simulations to run in determining these probabilities.
    
 2. getRoundKeys(tournament)  
@@ -136,7 +136,7 @@ Functions:
   
     Determines an available integer appended value for the given name and current date and returns the first available fileName in the current directory.  
     **return value** - the string of the first current available file name in the current directory of form "name-currentDate-#.svg".  
-    **name** - The string name preceding the desired filename.
+    **parameter - name** - The string name preceding the desired filename.
 
 3. appendEdge(edgeList, previousMatch, newMatch)  
   
@@ -174,8 +174,8 @@ Functions:
     Plots a pie chart showing the probability of a given team reaching each round in a given tournament, but no farther. Uses the getRoundProbablities function from Sub-Package 2 (analysis) Module 2 (team) and the plotPieTeam method in this module. The pie chart is saved as an SVG file in the current directory.  
   
     **return value** - None  
-    **parameter - tournament** - The given tournament object instance. 
-    **parameter - teamName** - The string name of the team of which you want to generate this pie plot on. 
+    **parameter - tournament** - The given tournament object instance.  
+    **parameter - teamName** - The string name of the team of which you want to generate this pie plot on.  
     **parameter - fileName** - the String Name of the file you wish to save the pie plot as in your current directory, if None then it is saved as "pieTeam-currentDate-#.svg" (see getNewFileName in subpackage 3 mod 1 for more info)  
     **parameter - numSimulations** - The integer number of simulations to use when determining the probabilities.
 
@@ -183,10 +183,10 @@ Functions:
 
     Plots a pie chart where the catagories and values are provided in the form of a dictionary. A helper function to assist with plotting in pieTeam. The pie plot is saved as an SVG in the current directory.  
   
-    **return value** - None 
-    **parameter - roundProbabilities** - dictionary of 'round number : probability' key value pairs.
-    **parameter - teamName** - string of the team name.
-    **parameter - pairingType** - string of the pairing type of the tournament.
+    **return value** - None  
+    **parameter - roundProbabilities** - dictionary of 'round number : probability' key value pairs.  
+    **parameter - teamName** - string of the team name  
+    **parameter - pairingType** - string of the pairing type of the tournament.  
     **parameter - fileName** - the String Name of the file you wish to save the pie plot as in your current directory, if None then it is saved as "pieTeam-currentDate-#.svg" (see getNewFileName in subpackage 3 mod 1 for more info)  
 
 4. plotPieTournament(winnerProbabilities, pairingType = None, fileName = None)  
