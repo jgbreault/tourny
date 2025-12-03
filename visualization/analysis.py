@@ -4,24 +4,7 @@ from ..analysis import tournament as tourny
 from ..analysis import team as tournyTeam
 from ..structure.foundation import Tournament
 from ..structure.foundation import Team
-
-def getNewFileName(name):
-    dateString = datetime.now().strftime("%Y-%m-%d")
-    prefixString = name+"-"+dateString
-    
-    if(len(glob.glob(prefixString+".svg")) < 1) :
-        return prefixString
-
-    possibleFilesList = glob.glob(prefixString+"-?*.svg")
-    integerList = []
-    for fileName in possibleFilesList :
-        if re.fullmatch(rf"{prefixString}-[0-9]+.svg", fileName):
-            integerList.append(int(fileName.split("-")[4].split(".")[0]))
-
-    if len(integerList) < 1 :
-        return prefixString+"-1"
-    
-    return prefixString+"-"+str(1+max(integerList))
+from ..visualization.tournament import getNewFileName
 
 def plotPieTournament(winnerProbabilities, pairingType = None, fileName = None):
     pieChart = pygal.Pie()

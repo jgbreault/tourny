@@ -1,8 +1,8 @@
+import glob, re
+from datetime import datetime
 import networkx as nx
 import matplotlib.pyplot as plt
 from networkx.drawing.nx_pydot import graphviz_layout
-import glob, re
-from datetime import datetime
 from ..structure.foundation import Tournament
 from ..structure.foundation import Team
 
@@ -71,14 +71,20 @@ def treeTournament(tourn, fileName = None) :
     while i < len(rounds):
         addRoundEdges(edges, rounds[i], rounds[i-1])
         i=i+1
+
+    finalRound = rounds[-1]
+    finalMatch = finalRound.matches[0]
+    winner = finalRound.matches[0].winner.name
+    edges.append((finalMatch.teams[0].name+" vs "+finalMatch.teams[1].name, "Winner is '"+winner+"'",
+                {'label': 'Winner: '+winner}))
+
     G.add_edges_from(edges)
 
     #pos = nx.spring_layout(G)
     pos = nx.nx_pydot.graphviz_layout(G, prog="dot")
-    nx.draw(G, pos, with_labels=True, node_color='skyblue',  font_size=10, node_size=2000, edge_color='gray', arrows=True)
+    nx.draw(G, pos, with_labels=True, node_color='skyblue',  font_size=7.5, node_size=2000, edge_color='gray', arrows=True)
 
     plt.title("Tournament Outcome:")
-    
     if not fileName :
         fileName = getNewFileName("TournamentTree")
     plt.savefig(fileName+".svg")
